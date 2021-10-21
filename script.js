@@ -1,7 +1,7 @@
 // Внутрь созданного блока записывать любой текст. Метод записи может быть любым.
 let area = document.getElementById('area');
 
-const DomElement = function (selector, height, width, bg, fontSize) {
+const DomElement = function (selector = '#small', height = '100', width = '100', bg = 'gray', fontSize = '20') {
   this.selector = selector;
   this.height = height;
   this.width = width;
@@ -28,7 +28,7 @@ DomElement.prototype.createElem = function () {
 let newDomClass = new DomElement('.square', 500, 500, 'red', 50);
 newDomClass.createElem();
 
-let newDomId = new DomElement('#crazy', 100, 250, 'green', 20);
+let newDomId = new DomElement();
 newDomId.createElem();
 
 console.log(newDomClass);
