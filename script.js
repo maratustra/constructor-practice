@@ -10,19 +10,30 @@ const DomElement = function (selector = '#small', height = '100', width = '100',
 };
 
 DomElement.prototype.createElem = function () {
+  // if (this.selector.startsWith('.')) {
+  //   let newDiv = document.createElement('div');
+  //   newDiv.className = `${this.selector.substring(1)}`;
+  //   newDiv.style.cssText = `height: ${this.height}px; width: ${this.width}px; background: ${this.bg}; font-size: ${this.fontSize}px;`;
+  //   newDiv.textContent = 'Привет, новый класс!';
+  //   area.append(newDiv);
+  // } else if (this.selector.startsWith('#')) {
+  //   let newParag = document.createElement('p');
+  //   newParag.id = `${this.selector.substring(1)}`;
+  //   newParag.style.cssText = `height: ${this.height}px; width: ${this.width}px; background: ${this.bg}; font-size: ${this.fontSize}px;`;
+  //   newParag.textContent = 'Здорово, новый айди!';
+  //   area.append(newParag);
+  // }
+  let elem;
   if (this.selector.startsWith('.')) {
-    let newDiv = document.createElement('div');
-    newDiv.className = `${this.selector.substring(1)}`;
-    newDiv.style.cssText = `height: ${this.height}px; width: ${this.width}px; background: ${this.bg}; font-size: ${this.fontSize}px;`;
-    newDiv.textContent = 'Привет, новый класс!';
-    area.append(newDiv);
+    elem = document.createElement('div');
+    elem.className = `${this.selector.substring(1)}`;
   } else if (this.selector.startsWith('#')) {
-    let newParag = document.createElement('p');
-    newParag.id = `${this.selector.substring(1)}`;
-    newParag.style.cssText = `height: ${this.height}px; width: ${this.width}px; background: ${this.bg}; font-size: ${this.fontSize}px;`;
-    newParag.textContent = 'Здорово, новый айди!';
-    area.append(newParag);
+    elem = document.createElement('p');
+    elem.id = `${this.selector.substring(1)}`;
   }
+  elem.style.cssText = `height: ${this.height}px; width: ${this.width}px; background: ${this.bg}; font-size: ${this.fontSize}px;`;
+  elem.textContent = 'Здрасьте!';
+  area.append(elem);
 };
 
 let newDomClass = new DomElement('.square', 500, 500, 'red', 50);
