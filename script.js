@@ -1,34 +1,28 @@
-// Внутрь созданного блока записывать любой текст. Метод записи может быть любым.
-let area = document.getElementById('area');
-
 const DomElement = function (selector = '#small', height = '100', width = '100', bg = 'gray', fontSize = '20') {
   this.selector = selector;
   this.height = height;
   this.width = width;
   this.bg = bg;
   this.fontSize = fontSize;
+  this.elem = null;
 };
 
 DomElement.prototype.createElem = function () {
-  let elem;
-
   if (this.selector.startsWith('.')) {
-    elem = document.createElement('div');
-    elem.className = `${this.selector.substring(1)}`;
+    this.elem = document.createElement('div');
+    this.elem.className = `${this.selector.substring(1)}`;
   } else if (this.selector.startsWith('#')) {
-    elem = document.createElement('p');
-    elem.id = `${this.selector.substring(1)}`;
+    this.elem = document.createElement('p');
+    this.elem.id = `${this.selector.substring(1)}`;
   }
-  elem.style.cssText = `height: ${this.height}px; width: ${this.width}px; background: ${this.bg}; font-size: ${this.fontSize}px;`;
-  elem.textContent = 'Здрасьте!';
-  area.append(elem);
+
+  this.elem.style.cssText = `height: ${this.height}px; width: ${this.width}px; background: ${this.bg}; font-size: ${this.fontSize}px;`;
+  this.elem.textContent = 'Здрасьте!';
+  document.querySelector('body').append(this.elem);
 };
 
-let newDomClass = new DomElement('.square', 500, 500, 'red', 50);
+let newDomClass = new DomElement('.square', 100, 100, 'pink');
 newDomClass.createElem();
-
-let newDomId = new DomElement();
-newDomId.createElem();
+newDomClass.elem.style.position = 'absolute';
 
 console.log(newDomClass);
-console.log(newDomId);
